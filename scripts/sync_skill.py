@@ -40,18 +40,15 @@ def ensure_sync_between_dirs():
     """Ensure core production scripts and docs are mirrored between deployed scripts and skill packages."""
     print("🔄 [1/4] 检查并同步生产脚本与文档镜像...")
     
-    # 1. Sync generate_commercial_video.py
-    src_engine = DEPLOYED_SCRIPTS_DIR / "generate_commercial_video.py"
-    target_engine_repo = SKILL_REPO_DIR / "scripts" / "generate_commercial_video.py"
-    target_engine_agent = AGENT_SKILL_DIR / "scripts" / "generate_commercial_video.py"
-    
-    if src_engine.exists():
-        # Compare mtime/size
+    # 1. Sync all production scripts
+    for src_script in DEPLOYED_SCRIPTS_DIR.glob("*.py"):
+        target_engine_repo = SKILL_REPO_DIR / "scripts" / src_script.name
+        target_engine_agent = AGENT_SKILL_DIR / "scripts" / src_script.name
         target_engine_repo.parent.mkdir(parents=True, exist_ok=True)
         target_engine_agent.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src_engine, target_engine_repo)
-        shutil.copy2(src_engine, target_engine_agent)
-        print("  ✓ 核心生产引擎 generate_commercial_video.py 镜像已对齐")
+        shutil.copy2(src_script, target_engine_repo)
+        shutil.copy2(src_script, target_engine_agent)
+        print(f"  ✓ 生产脚本 {src_script.name} 镜像已对齐")
         
     # 2. Sync SKILL.md and references between repo and local agent skill
     if (SKILL_REPO_DIR / "SKILL.md").exists():
