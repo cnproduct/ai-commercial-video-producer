@@ -87,7 +87,7 @@ def git_commit_and_push(commit_msg: str):
     print("🚀 [3/4] 提交并推送至 GitHub 开源仓库 (cnproduct/ai-commercial-video-producer)...")
     
     # Check git status
-    st_res = subprocess.run(["git", "status", "--porcelain"], cwd=str(SKILL_REPO_DIR), capture_output=True, text=True)
+    st_res = subprocess.run(["git", "status", "--porcelain"], cwd=str(SKILL_REPO_DIR), capture_output=True, text=True, encoding="utf-8", errors="replace")
     if not st_res.stdout.strip():
         print("  ℹ️ 技能包无新增修改内容，无需提交。")
         return True
@@ -97,11 +97,11 @@ def git_commit_and_push(commit_msg: str):
     
     # Git commit
     full_commit_msg = commit_msg if commit_msg else f"chore: automated skill evolution sync ({datetime.now().strftime('%Y-%m-%d %H:%M')})"
-    c_res = subprocess.run(["git", "commit", "-m", full_commit_msg], cwd=str(SKILL_REPO_DIR), capture_output=True, text=True)
+    c_res = subprocess.run(["git", "commit", "-m", full_commit_msg], cwd=str(SKILL_REPO_DIR), capture_output=True, text=True, encoding="utf-8", errors="replace")
     print(f"  ✓ 提交成功: {full_commit_msg}")
     
     # Git push
-    p_res = subprocess.run(["git", "push", "origin", "main"], cwd=str(SKILL_REPO_DIR), capture_output=True, text=True)
+    p_res = subprocess.run(["git", "push", "origin", "main"], cwd=str(SKILL_REPO_DIR), capture_output=True, text=True, encoding="utf-8", errors="replace")
     if p_res.returncode == 0:
         print("  ✓ 成功推送到 GitHub 远程仓库 (origin/main)！")
         return True
