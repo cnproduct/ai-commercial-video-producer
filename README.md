@@ -114,7 +114,8 @@ ai-commercial-video-producer/
 ├── LICENSE                           # MIT License
 ├── .gitignore                        # Git exclusion rules
 ├── scripts/
-│   └── generate_commercial_video.py  # Production-ready Universal Pro 4.0 engine
+│   ├── generate_commercial_video.py  # Production-ready Universal Pro 4.0 engine
+│   └── sync_skill.py                 # Automated skill evolution & GitHub synchronization tool
 ├── references/
 │   ├── OPTIMIZATION_EVOLUTION.md     # Multi-round real-world optimization history
 │   └── PIPELINE_ARCHITECTURE.md      # Mathematical, optical & acoustic engineering specs

@@ -100,3 +100,33 @@ python scripts/generate_commercial_video.py --image "path/to/product.jpg" --mate
 > **“这是新产品图 [图片]，材质是：[例如：食品级硅胶 / 环保塑料 / 阳极氧化铝 / 水晶玻璃]，帮我出一版 15 秒商业视频。”**
 
 系统将自动识别并执行完整 Universal Pro 4.0 超清旗舰流水线！
+
+---
+
+## 🔄 持续进化与自动沉淀机制 (Auto-Persistence & Evolution Protocol)
+
+为确保在后续使用中解决的任何有价值问题、新材质参数与运镜优化能自动累积沉淀到本 GitHub 技能仓库，所有 AI 助手在执行视频生成与调优任务时，必须严格遵守以下**《会话级交付即沉淀铁律》**：
+
+### 1. 触发条件 (Trigger Gates)
+在本窗口会话中，当发生以下任意情况并成功生成/修复视频后：
+- 修复了画面瑕疵（如边缘畸变、反光噪点、模糊、主体漂移等）；
+- 增加了新的材质特征、光效物理模型或运镜机位；
+- 优化了提示词工程、防抖算法或配乐生成逻辑；
+- 用户对视觉风格做出了指导性修正并达成优秀效果。
+
+### 2. 自动化沉淀执行步骤 (Execution Law)
+在向用户交付视频成品及展示链接的**同一流程内**，必须顺带执行：
+1. **自动执行同步脚本**：
+   ```bash
+   python "d:\视频\ai-commercial-video-producer\scripts\sync_skill.py" -m "本次优化的核心描述" --evolution "问题与根因 | 解决方案与实操效果"
+   ```
+2. **三方镜像同步保证**：
+   `sync_skill.py` 会全自动完成：
+   - 提取 `部署的脚本/generate_commercial_video.py` 最新代码；
+   - 更新 `references/OPTIMIZATION_EVOLUTION.md` 演进日志；
+   - 镜像同步本地 `.agents/skills/ai-video-producer` 智能体技能库；
+   - 执行 `git commit` 并推送至 `github.com/cnproduct/ai-commercial-video-producer`。
+3. **交付报告附带沉淀状态**：
+   在最终交付给用户的回复结尾处，明确提示沉淀动态：
+   > *💡 提示：本次解决的 [XXX问题/优化点] 已自动沉淀并同步至 [GitHub 技能仓库](https://github.com/cnproduct/ai-commercial-video-producer)。*
+
