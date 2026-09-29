@@ -118,24 +118,11 @@ def normalize_product_canvas(raw_img: np.ndarray, target_w: int = 3840, target_h
         return cv2.resize(raw_img, (target_w, target_h), interpolation=cv2.INTER_LANCZOS4)
 
     if aspect_src < aspect_target:
-        scale = target_h / float(H)
-        new_w = int(round(W * scale))
-        resized = cv2.resize(raw_img, (new_w, target_h), interpolation=cv2.INTER_LANCZOS4)
-        
-        pad_total = target_w - new_w
-        pad_l = pad_total // 2
-        pad_r = pad_total - pad_l
-        
-        canvas = np.zeros((target_h, target_w, 3), dtype=np.uint8)
-        canvas[:, pad_l:pad_l + new_w] = resized
-        
-        if pad_l > 0:
-            left_edge = resized[:, :min(pad_l, new_w)]
-            canvas[:, :pad_l] = cv2.flip(left_edge, 1)[:, -pad_l:]
-        if pad_r > 0:
-            right_edge = resized[:, -min(pad_r, new_w):]
-            canvas[:, pad_l + new_w:] = cv2.flip(right_edge, 1)[:, :pad_r]
-        return canvas
+        # 原图是 1:1 方图或竖图：采用电影级 16:9 黄金画幅取景，彻底杜绝在两侧镜像翻转复制产品！
+        crop_h = int(round(W / aspect_target))
+        y_start = max(0, min(H - crop_h, int(round((H - crop_h) * 0.40))))
+        cropped = raw_img[y_start:y_start + crop_h, 0:W]
+        return cv2.resize(cropped, (target_w, target_h), interpolation=cv2.INTER_LANCZOS4)
     else:
         scale = target_w / float(W)
         new_h = int(round(H * scale))
