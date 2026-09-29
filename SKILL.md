@@ -80,20 +80,31 @@ flowchart TD
 - **【违规灾难】**：镜像翻转会导致画面两侧截取并复制产品边缘，在左右生成诡异的“克隆假产品/重影”，严重破坏商业视觉严肃性；
 - **【强制标准】**：必须统一采用工业级标准的**“电影 16:9 黄金画幅原生取景裁切 (Cinematic 16:9 Framing)”**，确保画面中主体产品绝对唯一、左右背景干净纯正、构图比例高级协调。
 
+### 10. 真实三维实体运镜引擎 (3D Physical Entity Engine)
+- **【核心突破】**：彻底终结“摄影机像在 2D 平面图片上移动”的纸片感与假图感，呈现真实的物理三维雕塑空间感！
+- **四大核心技术支柱**：
+  1. **多层物理深度视差 (Multi-Plane Spatial Motion Parallax)**：基于 Depth-Anything-V2 稠密深度场与保边平滑滤波，近景（餐具、杯盘）位移速度达到远景的 2.5 ~ 3.0 倍，产生真实的动态空间错位与透视穿透；
+  2. **摄影机透视梯形偏航 (3D Keystone Perspective Convergence)**：模拟摄影机真实环绕主体时的自动朝向补偿（Yaw Angle），使台面与几何边缘产生近宽远窄的三维透视汇聚；
+  3. **金属各向异性高光呼吸 (Specular Viewing-Angle Breathing)**：不锈钢与金属质感表面高光随视角移动自然流转，完美呈现精工拉丝与锁扣卷边工艺；
+  4. **真实光学浅景深散景 (Physical Optical Bokeh)**：主体焦平面清晰锐利，远端石墙与背景自然柔化散景，彻底废除人工假扫光。
+
 ---
 
 ## 🛠️ 生产脚本调用指南
 
-核心生产引擎位于 `scripts/generate_commercial_video.py`：
+核心生产引擎位于 `scripts/generate_commercial_video.py` 与 `scripts/generate_3d_physical_entity_video.py`：
 
 ```bash
-# 1. 默认 4K 极清母带模式 (自动超分 4096 + 原生 4K 直通 + 智能机位自动轮转)
+# 1. 真实三维实体运镜引擎 (推荐：彻底告别平面图感，高保真 3D 空间视差 + 真实物理透视)
+python scripts/generate_3d_physical_entity_video.py --image "path/to/product.jpg" --material "304食品级不锈钢" --product "便携野餐盒套组"
+
+# 2. 默认 4K 极清母带模式 (自动超分 4096 + 原生 4K 直通 + 智能机位自动轮转)
 python scripts/generate_commercial_video.py --image "path/to/product.jpg" --material "食品级硅胶"
 
-# 2. 显式指定机位 (如机位 1 ~ 6) 并强制重新生成
+# 3. 显式指定机位 (如机位 1 ~ 6) 并强制重新生成
 python scripts/generate_commercial_video.py --image "path/to/product.jpg" --material "环保工程塑料" --angle 1 --no_cache
 
-# 3. 指定输出路径与商业品类名称
+# 4. 指定输出路径与商业品类名称
 python scripts/generate_commercial_video.py --image "path/to/product.jpg" --material "316L精钢" --product "Luxury Mechanical Watch" --output "output_4k.mp4"
 ```
 
