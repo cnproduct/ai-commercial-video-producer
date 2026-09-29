@@ -188,7 +188,7 @@ def build_clean_shot1(canvas_img: np.ndarray, output_mp4: Path, target_w: int = 
             [curr_cx - curr_bw / 2.0, curr_cy + curr_bh / 2.0]
         ])
         M = cv2.getAffineTransform(src_pts, dst_pts)
-        frame = cv2.warpAffine(canvas_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
+        frame = cv2.warpAffine(canvas_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
         
         # 纯净实拍微反差 (零假扫光！)
         frame = apply_subtle_film_acutance(frame)
@@ -244,7 +244,7 @@ def build_clean_shot2(canvas_img: np.ndarray, output_mp4: Path, target_w: int = 
             [curr_cx - curr_bw / 2.0, curr_cy + curr_bh / 2.0]
         ])
         M = cv2.getAffineTransform(src_pts, dst_pts)
-        frame = cv2.warpAffine(canvas_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
+        frame = cv2.warpAffine(canvas_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
         
         # 纯净微反差
         frame = apply_subtle_film_acutance(frame)
@@ -301,7 +301,7 @@ def build_clean_shot3(canvas_img: np.ndarray, output_mp4: Path, target_w: int = 
             [curr_cx - curr_bw / 2.0, curr_cy + curr_bh / 2.0]
         ])
         M = cv2.getAffineTransform(src_pts, dst_pts)
-        frame = cv2.warpAffine(canvas_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
+        frame = cv2.warpAffine(canvas_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
         
         # 纯净微反差
         frame = apply_subtle_film_acutance(frame)

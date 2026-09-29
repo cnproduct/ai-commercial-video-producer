@@ -536,7 +536,7 @@ def build_universal_cinebot_shot1(
             [curr_cx - curr_bw / 2.0, curr_cy + curr_bh / 2.0]
         ])
         M = cv2.getAffineTransform(src_pts, dst_pts)
-        frame = cv2.warpAffine(raw_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
+        frame = cv2.warpAffine(raw_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
 
         # Dynamic lighting sweep matching material physics
         light_progress = p * 1.4 - 0.2
@@ -723,7 +723,7 @@ def build_universal_cinebot_shot2(
 
         src_pts = np.float32([[p0_x, p0_y], [p1_x, p1_y], [p2_x, p2_y]])
         M = cv2.getAffineTransform(src_pts, dst_pts)
-        frame = cv2.warpAffine(raw_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
+        frame = cv2.warpAffine(raw_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
 
         # 材质物理光影合成
         light_pos = p * light_p_mult + light_p_offset
@@ -838,7 +838,7 @@ def build_universal_cinebot_pullout(
             [curr_cx - curr_bw / 2.0, curr_cy + curr_bh / 2.0]
         ])
         M = cv2.getAffineTransform(src_pts, dst_pts)
-        frame = cv2.warpAffine(raw_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
+        frame = cv2.warpAffine(raw_img, M, (target_w, target_h), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
 
         # Dynamic softbox light bloom across scene
         light_progress = p * 1.2 - 0.1

@@ -250,9 +250,9 @@ def render_3d_parallax_video(
         map_x = (cx + (xx - cx) / scale_map - shift_x_map).astype(np.float32)
         map_y = (cy + (yy - cy) / scale_map - shift_y_map).astype(np.float32)
 
-        frame_warped = cv2.remap(img, map_x, map_y, interpolation=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
-        blur_warped = cv2.remap(img_blur, map_x, map_y, interpolation=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
-        depth_warped = cv2.remap(depth, map_x, map_y, interpolation=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+        frame_warped = cv2.remap(img, map_x, map_y, interpolation=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
+        blur_warped = cv2.remap(img_blur, map_x, map_y, interpolation=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
+        depth_warped = cv2.remap(depth, map_x, map_y, interpolation=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
 
         # 物理光学浅景深散景合成 (Depth of Field Falloff)
         dof_dist = np.abs(depth_warped - hero_focus_depth)
