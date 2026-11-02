@@ -323,3 +323,10 @@ Lock flat vertical background wall and signage planes to a constant depth platea
 ## 📅 实战增量演进 (2026-11-02 17:10)
 
 Align level forward corridor dolly-in optical center with the true architectural vanishing point (cx=0.476W, cy=0.446H) on a 6K 4x-UltraSharp SOOC master so a 35% forward push-in preserves generous headroom above upper-wall signage with zero background blur.
+
+
+---
+
+## 📅 实战增量演进 (2026-11-02 17:27)
+
+Formulate 3D corridor walk-forward mapping as the analytical integral of the local sampling derivative f(r) = int s(u) du = r * [1 - prog * (a_center + (a_edge/3) * r^2)], guaranteeing df/dr >= 0.46 > 0 everywhere (zero edge stretching/folding) while achieving 2.17x foreground pass-by magnification vs 1.31x far-wall approach.
