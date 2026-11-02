@@ -309,3 +309,10 @@
 ## 📅 实战增量演进 (2026-11-02 16:36)
 
 Enforce strict four-edge parallax safe margin math (zoom_start <= 0.900 on 5.5K UltraSharp source) to eliminate any border reflection when executing simultaneous 3D horizontal truck and forward dolly-in.
+
+
+---
+
+## 📅 实战增量演进 (2026-11-02 17:02)
+
+Lock flat vertical background wall and signage planes to a constant depth plateau after Gaussian smoothing in 3D corridor parallax maps, preventing vertical corrugation shear during strong horizontal-forward camera translation while fusing ComfyUI MiniMax H3 FL2V low-frequency lighting dynamics.
