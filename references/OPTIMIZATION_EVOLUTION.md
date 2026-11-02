@@ -302,3 +302,10 @@
 ## 📅 实战增量演进 (2026-11-02 15:53)
 
 纯生成车间底图易带轻微CG感且缺乏真实厂房质感 | 基于真实工厂实拍图进行无滤镜SOOC去杂物重构，结合缓慢水平向前平移+轻微推进三维深度视差、前景五金工件锐利对焦+背景适度柔和光学虚化及右侧立式主轴平稳旋转，交付零CG感零滤镜的15秒4K静音母带
+
+
+---
+
+## 📅 实战增量演进 (2026-11-02 16:36)
+
+Enforce strict four-edge parallax safe margin math (zoom_start <= 0.900 on 5.5K UltraSharp source) to eliminate any border reflection when executing simultaneous 3D horizontal truck and forward dolly-in.
