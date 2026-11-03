@@ -330,3 +330,10 @@ Align level forward corridor dolly-in optical center with the true architectural
 ## 📅 实战增量演进 (2026-11-02 17:27)
 
 Formulate 3D corridor walk-forward mapping as the analytical integral of the local sampling derivative f(r) = int s(u) du = r * [1 - prog * (a_center + (a_edge/3) * r^2)], guaranteeing df/dr >= 0.46 > 0 everywhere (zero edge stretching/folding) while achieving 2.17x foreground pass-by magnification vs 1.31x far-wall approach.
+
+
+---
+
+## 📅 实战增量演进 (2026-11-03 10:58)
+
+Implement multi-image 4K cylindrical panorama stitching (SIFT+RANSAC local affine + zero-drift relaxation + DP optimal seam + 3-band Laplacian pyramid blending) coupled with Cylindrical-to-Rectilinear inverse yaw projection for seamless 360/panoramic factory rotation videos.
