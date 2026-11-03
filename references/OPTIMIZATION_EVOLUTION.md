@@ -344,3 +344,10 @@ Implement multi-image 4K cylindrical panorama stitching (SIFT+RANSAC local affin
 ## 📅 实战增量演进 (2026-11-03 11:04)
 
 多图全景旋转运镜（Panoramic Multi-Shot Rotation）必须采用单段恒定角速度曲线（Single-Span Constant Angular Velocity Fluid-Head Pan，仅在首尾 4% 时间做微正弦阻尼缓冲，中间 92% 时间保持 100% 恒定角速度），严禁在中间镜头节点使用分段余弦减速，彻底消除中间镜头的停顿感，还原真实摄影师液压云台一气呵成缓慢摇镜的实拍质感。
+
+
+---
+
+## 📅 实战增量演进 (2026-11-03 16:54)
+
+全景水平摇镜（Panoramic Horizontal Pan）严禁逐帧调用二维非线性 cv2.remap(..., INTER_LANCZOS4)（其 1/32 像素定点查表量化与垂向 cos(theta) 缩放会导致密集竖条纹墙板产生摩尔纹闪烁与上下微颤抖动）；必须先将全景母本一次性预缩放为标准 2160p 高度光学滑轨母带并施加 180° 快门水平光学低通抗混叠滤波（sigmaX=1.60, sigmaY=0.50），再以 60fps 高帧率执行纯 1D 水平刚体亚像素线性插值（cv2.addWeighted，垂直方向 0 重采样），彻底根治平移频闪与画面抖动。
