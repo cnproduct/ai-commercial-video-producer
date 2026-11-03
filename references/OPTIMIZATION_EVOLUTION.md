@@ -337,3 +337,10 @@ Formulate 3D corridor walk-forward mapping as the analytical integral of the loc
 ## 📅 实战增量演进 (2026-11-03 10:58)
 
 Implement multi-image 4K cylindrical panorama stitching (SIFT+RANSAC local affine + zero-drift relaxation + DP optimal seam + 3-band Laplacian pyramid blending) coupled with Cylindrical-to-Rectilinear inverse yaw projection for seamless 360/panoramic factory rotation videos.
+
+
+---
+
+## 📅 实战增量演进 (2026-11-03 11:04)
+
+多图全景旋转运镜（Panoramic Multi-Shot Rotation）必须采用单段恒定角速度曲线（Single-Span Constant Angular Velocity Fluid-Head Pan，仅在首尾 4% 时间做微正弦阻尼缓冲，中间 92% 时间保持 100% 恒定角速度），严禁在中间镜头节点使用分段余弦减速，彻底消除中间镜头的停顿感，还原真实摄影师液压云台一气呵成缓慢摇镜的实拍质感。
